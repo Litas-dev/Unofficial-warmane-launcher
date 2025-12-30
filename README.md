@@ -7,7 +7,7 @@
 **The next-generation launcher for the Warmane World of Warcraft private server.**
 Modern, fast, and feature-rich. Built with Electron and React.
 
-[Download Latest Release](https://github.com/Litas-dev/warmane-launcher/releases) • [Report Bug](https://github.com/Litas-dev/warmane-launcher/issues)
+[Download Latest Release](https://github.com/Litas-dev/Unofficial-warmane-launcher/releases/) • [Report Bug](https://github.com/Litas-dev/Unofficial-warmane-launcher/issues)
 
 </div>
 
@@ -55,7 +55,7 @@ Designed to be immersive, it features a dynamic video background, real-time serv
 ## 🚀 Getting Started
 
 ### For Users
-1.  Go to the [Releases](https://github.com/Litas-dev/warmane-launcher/releases) page.
+1.  Go to the [Releases](https://github.com/Litas-dev/Unofficial-warmane-launcher/releases/) page.
 2.  Download `Warmane.Launcher.Setup.exe`.
 3.  Run the installer and follow the on-screen instructions.
 
