@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Warmane Launcher](image.png)
+![Warmane Launcher](gui.png)
 
 **The next-generation launcher for the Warmane World of Warcraft private server.**
 Modern, fast, and feature-rich. Built with Electron and React.
@@ -109,8 +109,5 @@ This project is an unofficial fan creation and is not affiliated with, endorsed,
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## Preview
-
-![Launcher Preview](https://github.com/Litas-dev/Unofficial-warmane-launcher/raw/main/ezgif-1058c2802b133e6c.gif)
 
 
