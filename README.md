@@ -34,7 +34,6 @@ It is the first private server launcher to feature **"Deep Core" Integrity Verif
 
 ### 🎥 Immersive Experience
 *   **Integrated Music Player**: Enjoy the iconic soundtracks while you browse.
-*   **Cinematic Backgrounds**: Dynamic, high-quality video backgrounds that bring the launcher to life.
 *   **Classic Layout**: A refined user interface that pays homage to the original WoW launcher while using modern glass-morphism effects.
 
 ### ⚡ Smart Game Installation
@@ -98,14 +97,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
-## ⚠️ Disclaimer
-
-This project is an unofficial fan creation and is not affiliated with, endorsed, sponsored, or specifically approved by Warmane or Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment.
-
-## 📄 License
-
-Distributed under the MIT License. See LICENSE for more information.4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
 
 ## ⚠️ Disclaimer
 
