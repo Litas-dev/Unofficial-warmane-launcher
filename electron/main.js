@@ -32,7 +32,7 @@ let downloadInterval = null;
 
 // --- Configuration ---
 const SECURITY_CHECK_ENABLED = true;
-const SECURITY_ENDPOINT = 'https://raw.githubusercontent.com/Litas-dev/Unofficial-warmane-launcher/main/security.json';
+const SECURITY_ENDPOINT = 'https://raw.githubusercontent.com/Litas-dev/Azeroth-Legacy-Launcher/main/security.json';
 
 // --- Application Logic ---
 function createWindow() {
@@ -672,7 +672,7 @@ ipcMain.handle('get-app-version', () => {
 ipcMain.handle('check-for-updates', async () => {
     try {
         const currentVersion = app.getVersion();
-        const response = await fetch('https://api.github.com/repos/Litas-dev/Unofficial-warmane-launcher/releases/latest', {
+        const response = await fetch('https://api.github.com/repos/Litas-dev/Azeroth-Legacy-Launcher/releases/latest', {
             headers: { 'User-Agent': 'Warmane-Launcher' }
         });
         
