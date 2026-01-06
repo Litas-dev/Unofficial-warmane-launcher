@@ -7,7 +7,8 @@
 **The ultimate, secure, and modern launcher for private servers.**
 *Supports 1.12.1 • 2.4.3 • 2.5.2 • 3.3.5a*
 
-[Download Latest Release](https://github.com/Litas-dev/Azeroth-Legacy-Launcher/releases) • [Report Bug](https://github.com/Litas-dev/Azeroth-Legacy-Launcher/issues)
+
+[Download Latest Release](https://github.com/Litas-dev/Azeroth-Legacy-Launcher/releases) • [Report Bug](https://github.com/Litas-dev/Azeroth-Legacy-Launcher/issues) • ![Downloads](https://img.shields.io/github/downloads/Litas-dev/Azeroth-Legacy-Launcher/total?label=Downloads&logo=github&color=blue)
 
 </div>
 
