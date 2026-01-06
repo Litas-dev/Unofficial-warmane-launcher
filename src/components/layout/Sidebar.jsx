@@ -1,7 +1,7 @@
 import React from 'react';
-import { Home, Layers, Plus, Puzzle, Settings, Info, AlertTriangle, Music, Download } from 'lucide-react';
+import { Home, Layers, Plus, Puzzle, Settings, Info, AlertTriangle, Music, Download, Globe } from 'lucide-react';
 import { games } from '../../config/games';
-import azerothLogo from '../../assets/azeroth_legacy_logo.png';
+import azerothLogo from '../../assets/logo-new-white.png';
 import styles from './Sidebar.module.css';
 
 const Sidebar = ({
@@ -96,9 +96,27 @@ const Sidebar = ({
             </div>
 
             <div className={styles.sidebarFooter}>
-                <button className={styles.musicToggle} onClick={onToggleMusic} title="Toggle Music">
-                    {isMusicPlaying ? <Music size={16} className="animate-pulse" /> : <Music size={16} />}
+                <button 
+                    className={`${styles.musicToggle} ${isMusicPlaying ? styles.musicPlaying : ''}`} 
+                    onClick={onToggleMusic} 
+                    title="Toggle Music"
+                >
+                    <Music size={16} />
                 </button>
+
+                <a 
+                    href="#" 
+                    className={styles.websiteLink} 
+                    onClick={(e) => {
+                        e.preventDefault();
+                        const { shell } = window.require('electron');
+                        shell.openExternal('https://relictum.org/');
+                    }}
+                    title="Visit Website"
+                >
+                    <Globe size={16} />
+                </a>
+
                 <div className={styles.versionInfo}>
                     <span className={styles.versionText}>v{appVersion}</span>
                     {updateInfo && updateInfo.updateAvailable && (

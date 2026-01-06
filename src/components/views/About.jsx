@@ -10,7 +10,7 @@ const About = ({ appVersion, integrityStatus, integrityHash }) => {
   return (
     <div className={styles.aboutView}>
       <div className={styles.header}>
-        <h2>Azeroth Legacy Launcher <span className={styles.versionTag}>v{appVersion || '3.0.1'}</span></h2>
+        <h2>Relictum Launcher <span className={styles.versionTag}>v{appVersion || '3.0.1'}</span></h2>
       </div>
 
       <div className={`${styles.securityCard} ${styles[integrityStatus] || styles.secure}`}>
@@ -37,7 +37,7 @@ const About = ({ appVersion, integrityStatus, integrityHash }) => {
           </code>
         </div>
         
-        <button className={styles.verifyLink} onClick={() => openLink('https://github.com/Litas-dev/Unofficial-warmane-launcher')}>
+        <button className={styles.verifyLink} onClick={() => openLink('https://github.com/Litas-dev/Relictum-Launcher')}>
           <ExternalLink size={12} style={{marginRight: '5px'}}/> Verify Official Hash on GitHub
         </button>
       </div>

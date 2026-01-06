@@ -8,7 +8,7 @@
   z-index: 10;
   box-shadow: 5px 0 30px rgba(0, 0, 0, 0.6);
   position: relative;
-  padding-top: 32px;
+  padding-top: 5px;
 }
 
 .sidebar::before {
@@ -28,14 +28,16 @@
 }
 
 .sidebarLogo {
-  padding: 20px 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
   background: radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%);
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
+  overflow: hidden;
+  height: 80px; /* Force a smaller container height */
 }
 
 .sidebarLogo::after {
@@ -53,6 +55,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
   filter: drop-shadow(0 0 20px rgba(var(--primary-rgb), 0.3));
   transition: filter 0.3s;
 }
@@ -64,9 +67,10 @@
 .sidebarLogo img {
   max-width: 100%;
   height: auto;
-  max-height: 175px;
+  max-height: 175px; /* Keep original max-height to maintain scale */
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   clip-path: inset(2px);
+  margin-top: 5px; /* Adjusted to center the logo vertically */
 }
 
 .sidebarLogo img:hover {
@@ -220,24 +224,42 @@
   animation: pulse 2s infinite;
 }
 
-.musicToggle {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-secondary);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+.musicToggle, .websiteLink {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
+  border-radius: 50%;
 }
 
-.musicToggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
+.musicToggle:hover, .websiteLink:hover {
+  color: var(--primary-gold);
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.2);
+}
+
+@keyframes musicPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(var(--primary-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+  }
+}
+
+.musicPlaying {
+  color: var(--primary-gold);
+  animation: musicPulse 2s infinite;
+  background: rgba(var(--primary-rgb), 0.1) !important;
 }
 
 .gameName {

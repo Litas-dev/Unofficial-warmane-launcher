@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import ipcRenderer from '../utils/ipc';
 import { games } from '../config/games';
 import { playNotificationSound } from '../utils/audio';
-import azerothLogo from '../assets/azeroth_legacy_logo.png';
+import azerothLogo from '../assets/logo-new-white.png';
 
 export const useDownloader = ({ 
     activeGameId, 

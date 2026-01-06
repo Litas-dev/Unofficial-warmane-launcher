@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trash2, ChevronDown, FolderOpen, X } from 'lucide-react';
+import { Trash2, ChevronDown, FolderOpen, X, Globe } from 'lucide-react';
 import styles from './Settings.module.css';
 import { themes } from '../../config/themes';
 
@@ -33,6 +33,23 @@ const Settings = ({
     <div className={styles.settingsView}>
       <h2>Settings</h2>
       
+      <div className={styles.settingsSection}>
+        <h3>General</h3>
+        <div className={styles.toggleRow}>
+          <div className={styles.toggleLabel}>
+            <span className={styles.toggleTitle}>Language</span>
+            <span className={styles.toggleDesc}>Select application language (Work in Progress).</span>
+          </div>
+          <button 
+            className={styles.cleanCacheBtn} 
+            style={{ opacity: 0.5, cursor: 'not-allowed', width: 'auto', minWidth: '100px', justifyContent: 'center' }}
+            title="Coming Soon"
+          >
+            <Globe size={14} /> English
+          </button>
+        </div>
+      </div>
+
       <div className={styles.settingsSection}>
         <h3>Launcher Behavior</h3>
         <div className={styles.toggleRow}>
@@ -158,28 +175,7 @@ const Settings = ({
         </div>
       </div>
 
-       <div className={styles.settingsSection}>
-         <h3>Downloads & Installation</h3>
-        <div className={styles.settingRow}>
-          <div className={styles.settingLabel}>
-            <div className={styles.settingTitle}>Default Download Path</div>
-            <div className={styles.settingDesc}>Games will be automatically installed here.</div>
-          </div>
-          <div className={styles.settingControls}>
-            <div className={styles.pathDisplay} title={defaultDownloadPath || 'Ask every time'}>
-              {defaultDownloadPath || 'Ask every time'}
-            </div>
-            <button className={styles.iconBtnSecondary} onClick={handleSetDefaultPath} title="Change Path">
-              <FolderOpen size={16} />
-            </button>
-            {defaultDownloadPath && (
-              <button className={styles.iconBtnSecondary} onClick={handleClearDefaultPath} title="Clear Default Path">
-                <X size={16} />
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 };

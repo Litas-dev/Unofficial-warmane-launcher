@@ -1,7 +1,7 @@
 {
   "name": "relictum-launcher",
   "private": true,
-  "version": "3.1.0",
+  "version": "3.1.9",
   "author": "Relictum",
   "description": "The ultimate, secure, and modern launcher for private servers.",
   "repository": {
@@ -35,7 +35,7 @@
     "appId": "com.relictum.launcher",
     "productName": "Relictum Launcher",
     "directories": {
-      "output": "dist_v3.0.3_final"
+      "output": "dist_v3.3.0_final"
     },
     "files": [
       "dist-electron/**/*",
@@ -54,11 +54,11 @@
       "runAfterFinish": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Azeroth Legacy Launcher",
+      "shortcutName": "Relictum Launcher",
       "installerIcon": "build/icon.ico",
       "uninstallerIcon": "build/icon.ico",
       "installerHeaderIcon": "build/icon.ico",
-      "installerHeader": "src/assets/azeroth_legacy_logo.png",
+      "installerHeader": "src/assets/logo-new-white.png",
       "installerSidebar": "build/icon.png"
     }
   }

@@ -6,9 +6,9 @@ const wotlkLogo = 'https://logos-world.net/wp-content/uploads/2021/02/World-of-W
 import classicArt from '../assets/1.12.png';
 import tbcArt from '../assets/2.4.3.png';
 import wotlkArt from '../assets/3.3.5.png';
-import classicIco from '../assets/wow-classic.ico';
-import tbcIco from '../assets/wow-tbc.ico';
-import wotlkIco from '../assets/wow-wotlk.ico';
+import classicIcon from '../assets/wow-classic-icon.png';
+import tbcIcon from '../assets/wow-tbc-icon.png';
+import wotlkIcon from '../assets/wow-wotlk-icon.png';
 
 export const games = [
   { 
@@ -18,7 +18,7 @@ export const games = [
     menuLabel: '1.12',
     version: '1.12.1', 
     icon: classicLogo,
-    clientIcon: classicIco,
+    clientIcon: classicIcon,
     cardArt: classicArt,
     bg: 'https://images.alphacoders.com/109/1097880.jpg', // Background for Classic
   },
@@ -29,7 +29,7 @@ export const games = [
     menuLabel: '2.4.3',
     version: '2.4.3', 
     icon: tbcLogo,
-    clientIcon: tbcIco,
+    clientIcon: tbcIcon,
     cardArt: tbcArt,
     bg: 'https://images.alphacoders.com/603/603505.jpg', // Background for TBC
   },
@@ -40,7 +40,7 @@ export const games = [
     menuLabel: '3.3.5',
     version: '3.3.5a', 
     icon: wotlkLogo,
-    clientIcon: wotlkIco,
+    clientIcon: wotlkIcon,
     cardArt: wotlkArt,
     bg: 'https://images.alphacoders.com/694/69466.jpg', // Background for WotLK
   }
