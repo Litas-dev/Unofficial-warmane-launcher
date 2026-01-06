@@ -77,3 +77,6 @@ This section lists the labels we use to help us track and manage issues and pull
 *   `help wanted` - The maintainer needs help with this issue.
 
 Thank you for contributing!
+
+
+By submitting a contribution, you agree to assign or license the contribution to the project owner under the existing project license.
