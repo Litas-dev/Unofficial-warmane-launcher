@@ -1,12 +1,12 @@
 {
-  "name": "warmane-launcher",
+  "name": "relictum-launcher",
   "private": true,
   "version": "3.1.0",
-  "author": "Azeroth Legacy",
-  "description": "Unofficial Azeroth Legacy Launcher",
+  "author": "Relictum",
+  "description": "The ultimate, secure, and modern launcher for private servers.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Litas-dev/Azeroth-Legacy-Launcher.git"
+    "url": "https://github.com/Litas-dev/Relictum-Launcher.git"
   },
   "main": "electron/main.js",
   "scripts": {
@@ -32,8 +32,8 @@
     "wait-on": "^7.2.0"
   },
   "build": {
-    "appId": "com.azerothlegacy.launcher",
-    "productName": "Azeroth Legacy Launcher",
+    "appId": "com.relictum.launcher",
+    "productName": "Relictum Launcher",
     "directories": {
       "output": "dist_v3.0.3_final"
     },
