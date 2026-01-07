@@ -8,7 +8,7 @@
 *Supports 1.12.1 • 2.4.3 • 3.3.5a*
 
 
-[Download Latest Release](https://github.com/Litas-dev/Relictum-Launcher/releases) • [Report Bug](https://github.com/Litas-dev/Relictum-Launcher/issues) • ![Downloads](https://img.shields.io/github/downloads/Litas-dev/Relictum-Launcher/total?label=Downloads&logo=github&color=blue)
+[Download Latest Release](https://github.com/Litas-dev/Relictum-Launcher/releases) • [Report Bug](https://github.com/Litas-dev/Relictum-Launcher/issues) • [![Discord](https://img.shields.io/discord/1173693247547510924?label=Discord&logo=discord&style=flat-square&color=5865F2)](https://discord.gg/ttnHHMnru2) • ![Downloads](https://img.shields.io/github/downloads/Litas-dev/Relictum-Launcher/total?label=Downloads&logo=github&color=blue)
 
 </div>
 
