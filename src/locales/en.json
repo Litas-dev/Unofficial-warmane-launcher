@@ -11,7 +11,8 @@
     "toggle_music": "Toggle Music",
     "visit_website": "Visit Website",
     "update_available": "Update Available",
-    "rename": "Rename"
+    "rename": "Rename",
+    "join_discord": "Join Discord"
   },
   "dashboard": {
     "hero_description": "A modern, secure launcher built for gaming. <1/> Manage multiple expansions, addons, and settings in one unified hub.",

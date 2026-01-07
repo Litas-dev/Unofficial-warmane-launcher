@@ -282,3 +282,14 @@
     transform: translateY(0);
   }
 }
+
+/* Disable Glow - Stronger Specificity to override all game icons */
+.disableGlow:hover .gameIcon,
+.gameIconCard.disableGlow:hover .gameIcon,
+.gameIconCard.disableGlow:hover .gameIconClassic,
+.gameIconCard.disableGlow:hover .gameIconTbc,
+.gameIconCard.disableGlow:hover .gameIconWotlk,
+.discordIconContainer.disableGlow:hover .gameIcon {
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)) !important;
+  transform: none !important; /* Also disable the zoom if desired, or remove this line to keep zoom */
+}

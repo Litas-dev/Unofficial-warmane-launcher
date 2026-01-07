@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Play, Globe, FolderSearch } from 'lucide-react';
 import styles from './GameDetails.module.css';
 import ipcRenderer from '../../utils/ipc';
@@ -12,9 +11,9 @@ const GameDetails = ({
   onPlay,
   onConfigureRealmlist,
   onLocateGame,
-  onForgetGame
+  onForgetGame,
+  enableGlowEffects
 }) => {
-  const { t } = useTranslation();
   const [detectedVersion, setDetectedVersion] = useState(null);
   const [isVersionCompatible, setIsVersionCompatible] = useState(true);
 
@@ -68,19 +67,23 @@ const GameDetails = ({
               src={activeGame.cardArt || activeGame.icon}  
               className={styles.gameHeaderArt} 
               alt={activeGame.name}
-              style={{
+              style={enableGlowEffects ? {
                 filter: `drop-shadow(0 0 30px ${
                   activeGame.id === 'tbc' ? 'rgba(40, 255, 60, 0.6)' : 
                   activeGame.id === 'classic' ? 'rgba(251, 191, 36, 0.6)' :
                   'rgba(0, 140, 255, 0.6)'
                 })`
-              }}
+              } : {}}
             />
-            <div className={`${styles.overlayIcon} ${styles[`glow_${activeGame.id}`]}`}>
+            <div 
+              className={`${styles.overlayIcon} ${styles[`glow_${activeGame.id}`]}`}
+              style={enableGlowEffects ? {} : { filter: 'none', boxShadow: 'none' }}
+            >
               <img 
                 src={activeGame.clientIcon} 
                 alt={`${activeGame.shortName} Icon`}
                 className={styles.largeGameIcon}
+                style={enableGlowEffects ? {} : { filter: 'drop-shadow(0 0 10px rgba(0,0,0,0.5))' }}
               />
             </div>
           </div>
@@ -96,12 +99,12 @@ const GameDetails = ({
                   disabled={isPlaying || !isVersionCompatible}
                 >
                   <Play size={24} fill="currentColor" /> 
-                  {!isVersionCompatible ? t('game_details.wrong_version') : (isPlaying ? t('game_details.playing') : t('game_details.play'))}
+                  {!isVersionCompatible ? "WRONG VERSION" : (isPlaying ? "PLAYING" : "PLAY")}
                 </button>
                 <button 
                   className={styles.iconBtnLarge} 
                   onClick={onConfigureRealmlist}
-                  title={t('game_details.configure_realmlist')}
+                  title="Configure Realmlist"
                 >
                   <Globe size={24} />
                 </button>
@@ -110,7 +113,7 @@ const GameDetails = ({
               <div className={styles.installSection}>
                 <div className={styles.installButtons}>
                   <button className={styles.locateButton} onClick={onLocateGame}>
-                    <FolderSearch size={16} /> {t('game_details.locate_game')}
+                    <FolderSearch size={16} /> Locate Existing Installation
                   </button>
                 </div>
               </div>
@@ -121,21 +124,21 @@ const GameDetails = ({
 
       <div className={styles.gameDetailsGrid}>
         <div className={styles.detailCard}>
-          <h4>{t('game_details.game_version')}</h4>
+          <h4>Game Version</h4>
           <p>{activeGame.version}</p>
           {detectedVersion && (
             <p className={!isVersionCompatible ? styles.errorText : ''} style={isVersionCompatible ? { fontSize: '0.8em', color: '#888', marginTop: '4px' } : { fontSize: '0.9em', marginTop: '4px' }}>
-              {t('game_details.detected_version', { version: detectedVersion })} {!isVersionCompatible && t('game_details.incompatible')}
+              Detected: {detectedVersion} {!isVersionCompatible && '(Incompatible)'}
             </p>
           )}
         </div>
         <div className={styles.detailCard}>
-          <h4>{t('game_details.installation_path')}</h4>
-          <p className={styles.pathText} title={currentPath || t('game_details.not_installed')}>
-            {currentPath || t('game_details.not_installed')}
+          <h4>Installation Path</h4>
+          <p className={styles.pathText} title={currentPath || 'Not Installed'}>
+            {currentPath || 'Not Installed'}
           </p>
           {currentPath && (
-            <button className={styles.removePathBtn} onClick={onForgetGame}>{t('game_details.remove')}</button>
+            <button className={styles.removePathBtn} onClick={onForgetGame}>Remove</button>
           )}
         </div>
       </div>

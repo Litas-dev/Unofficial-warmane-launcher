@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useTranslation, Trans } from 'react-i18next';
 import { 
   Minus, Square, X, Play, Settings as SettingsIcon, Download, Users, Globe, 
   ChevronRight, XCircle, FolderSearch, RefreshCw, Puzzle, Trash2, Plus, 
@@ -34,7 +33,6 @@ import { useAddons } from './hooks/useAddons';
 import wotlkTheme from './assets/music/wotlk-theme.mp3';
 
 function App() {
-  const { t } = useTranslation();
   // UI State
   const [activeView, setActiveView] = useState('dashboard'); // dashboard, game, addons, settings
   const [modalConfig, setModalConfig] = useState({
@@ -273,12 +271,12 @@ function App() {
     if (path) {
         try {
             await ipcRenderer.invoke('clear-game-cache', path);
-            showModal(t('modals.success'), t('modals.cache_cleared'), <button className="modal-btn-primary" onClick={closeModal}>{t('modals.ok')}</button>);
+            showModal('Success', 'Cache cleared successfully!', <button className="modal-btn-primary" onClick={closeModal}>OK</button>);
         } catch (e) {
-            showModal(t('modals.error'), t('modals.cache_error') + ': ' + e.message, <button className="modal-btn-primary" onClick={closeModal}>{t('modals.ok')}</button>);
+            showModal('Error', 'Failed to clear cache: ' + e.message, <button className="modal-btn-primary" onClick={closeModal}>OK</button>);
         }
     } else {
-        showModal(t('modals.error'), t('modals.locate_first'), <button className="modal-btn-primary" onClick={closeModal}>{t('modals.ok')}</button>);
+        showModal('Error', 'Game path not found. Please locate the game first.', <button className="modal-btn-primary" onClick={closeModal}>OK</button>);
     }
   };
 
@@ -300,6 +298,7 @@ function App() {
         onOpenAddons={() => setActiveView('addons')}
         integrityStatus={integrityStatus}
         isMusicPlaying={isMusicPlaying}
+        enableGlowEffects={settings.enableGlowEffects}
         onToggleMusic={toggleMusic}
         appVersion={appVersion}
         updateInfo={updateInfo}
@@ -354,6 +353,7 @@ function App() {
               onForgetGame={gameLibrary.handleForgetGame}
               onConfigureRealmlist={() => handleOpenRealmlist(gameLibrary.activeGameId)}
               isPlaying={gameLibrary.isPlaying}
+              enableGlowEffects={settings.enableGlowEffects}
             />
           )}
 
@@ -380,6 +380,9 @@ function App() {
               
               enableSoundEffects={settings.enableSoundEffects}
               toggleSoundEffects={settings.toggleSoundEffects}
+
+              enableGlowEffects={settings.enableGlowEffects}
+              toggleGlowEffects={settings.toggleGlowEffects}
               
               defaultDownloadPath={settings.defaultDownloadPath}
               handleSetDefaultPath={handleBrowseDefaultPath}
@@ -506,22 +509,22 @@ function App() {
       <Modal
         isOpen={renameConfig.isOpen}
         onClose={() => setRenameConfig(prev => ({ ...prev, isOpen: false }))}
-        title={t('modals.rename_client_title')}
+        title="Rename Client"
         footer={
           <>
-             <button className="modal-btn-secondary" onClick={handleResetName}>{t('modals.reset_default')}</button>
-             <button className="modal-btn-primary" onClick={handleSaveRename}>{t('modals.save_name')}</button>
+             <button className="modal-btn-secondary" onClick={handleResetName}>Reset to Default</button>
+             <button className="modal-btn-primary" onClick={handleSaveRename}>Save Name</button>
           </>
         }
       >
         <div className="rename-game-form">
-           <p className="rename-desc">{t('modals.rename_desc')}</p>
+           <p className="rename-desc">Enter a custom name for this client in the sidebar:</p>
            <input 
               type="text" 
               className="modal-input"
               value={renameConfig.currentName}
               onChange={(e) => setRenameConfig(prev => ({ ...prev, currentName: e.target.value }))}
-              placeholder={t('modals.enter_name')}
+              placeholder="Enter name..."
               autoFocus
            />
         </div>

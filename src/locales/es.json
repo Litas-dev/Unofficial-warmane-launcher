@@ -11,7 +11,8 @@
     "toggle_music": "Activar/Desactivar música",
     "visit_website": "Visitar web",
     "update_available": "Actualización disponible",
-    "rename": "Renombrar"
+    "rename": "Renombrar",
+    "join_discord": "Unirse a Discord"
   },
   "dashboard": {
     "hero_description": "Un launcher moderno y seguro hecho para jugar. <1/> Gestiona varias expansiones, addons y ajustes en un solo sitio.",

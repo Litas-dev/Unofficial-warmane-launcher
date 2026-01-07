@@ -9,6 +9,7 @@ export const useSettings = () => {
     const [defaultDownloadPath, setDefaultDownloadPath] = useState('');
     const [enableNotifications, setEnableNotifications] = useState(true);
     const [enableSoundEffects, setEnableSoundEffects] = useState(true);
+    const [enableGlowEffects, setEnableGlowEffects] = useState(true);
 
     // Load settings from local storage
     useEffect(() => {
@@ -32,6 +33,9 @@ export const useSettings = () => {
 
         const savedSoundEffects = localStorage.getItem('warmane_sound_effects');
         if (savedSoundEffects) setEnableSoundEffects(JSON.parse(savedSoundEffects));
+
+        const savedGlowEffects = localStorage.getItem('warmane_glow_effects');
+        if (savedGlowEffects) setEnableGlowEffects(JSON.parse(savedGlowEffects));
     }, []);
 
     // Apply Theme
@@ -79,6 +83,12 @@ export const useSettings = () => {
         localStorage.setItem('warmane_sound_effects', JSON.stringify(newValue));
     };
 
+    const toggleGlowEffects = () => {
+        const newValue = !enableGlowEffects;
+        setEnableGlowEffects(newValue);
+        localStorage.setItem('warmane_glow_effects', JSON.stringify(newValue));
+    };
+
     const updateDefaultDownloadPath = (path) => {
         setDefaultDownloadPath(path);
         localStorage.setItem('warmane_default_download_path', path);
@@ -98,6 +108,8 @@ export const useSettings = () => {
         enableNotifications,
         toggleNotifications,
         enableSoundEffects,
-        toggleSoundEffects
+        toggleSoundEffects,
+        enableGlowEffects,
+        toggleGlowEffects
     };
 };

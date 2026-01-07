@@ -8,7 +8,7 @@
   z-index: 10;
   box-shadow: 5px 0 30px rgba(0, 0, 0, 0.6);
   position: relative;
-  padding-top: 5px;
+  padding-top: 32px;
 }
 
 .sidebar::before {
@@ -32,22 +32,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
-  background: radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%);
+  border-bottom: none;
+  background: none;
   margin-bottom: 0;
-  position: relative;
-  overflow: hidden;
-  height: 80px; /* Force a smaller container height */
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .sidebarLogo::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-  right: 20%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.5), transparent);
+  display: none;
 }
 
 .sidebarLogoGlow {
@@ -55,7 +52,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
   filter: drop-shadow(0 0 20px rgba(var(--primary-rgb), 0.3));
   transition: filter 0.3s;
 }
@@ -65,12 +61,12 @@
 }
 
 .sidebarLogo img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
-  max-height: 175px; /* Keep original max-height to maintain scale */
+  max-height: 120px;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   clip-path: inset(2px);
-  margin-top: 5px; /* Adjusted to center the logo vertically */
+  opacity: 0.8;
 }
 
 .sidebarLogo img:hover {
@@ -81,10 +77,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 10px 15px;
+  padding: 60px 15px 10px;
   flex: 1;
   overflow-y: auto;
   scrollbar-width: none;
+  position: relative;
+  z-index: 1;
 }
 
 .navMenu::-webkit-scrollbar {
@@ -206,6 +204,18 @@
   gap: 10px;
 }
 
+.dangerIcon {
+  margin-left: auto;
+  animation: pulse 2s infinite;
+  filter: drop-shadow(0 0 2px rgba(239, 68, 68, 0.5));
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 .versionText {
   color: var(--text-secondary);
   font-size: 12px;
@@ -224,42 +234,72 @@
   animation: pulse 2s infinite;
 }
 
-.musicToggle, .websiteLink {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 5px;
+.musicToggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.musicToggle:hover, .websiteLink:hover {
-  color: var(--primary-gold);
-  background: rgba(255, 255, 255, 0.05);
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.2);
-}
-
-@keyframes musicPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 6px rgba(var(--primary-rgb), 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
-  }
+.musicToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .musicPlaying {
   color: var(--primary-gold);
-  animation: musicPulse 2s infinite;
-  background: rgba(var(--primary-rgb), 0.1) !important;
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 10px rgba(205, 165, 88, 0.3);
+  background: rgba(205, 165, 88, 0.1);
+}
+
+.musicPlaying:hover {
+  box-shadow: 0 0 15px rgba(205, 165, 88, 0.5);
+  background: rgba(205, 165, 88, 0.15);
+  border-color: var(--primary-gold);
+}
+
+.footerIconsMiddle {
+  display: flex;
+  gap: 8px;
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+.discordBtn,
+.websiteLink {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.discordBtn:hover {
+  background: rgba(88, 101, 242, 0.1);
+  color: #5865F2;
+  border-color: #5865F2;
+}
+
+.websiteLink:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-color: #3b82f6;
 }
 
 .gameName {

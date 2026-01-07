@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Trash2, ChevronDown, FolderOpen, X, Globe } from 'lucide-react';
 import styles from './Settings.module.css';
 import { themes } from '../../config/themes';
@@ -24,76 +23,41 @@ const Settings = ({
   toggleNotifications,
   enableSoundEffects,
   toggleSoundEffects,
+  enableGlowEffects,
+  toggleGlowEffects,
   defaultDownloadPath,
   handleSetDefaultPath,
   handleClearDefaultPath
 }) => {
-  const { t, i18n } = useTranslation();
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-    setIsLanguageDropdownOpen(false);
-  };
-
-  const languages = [
-    { code: 'en', label: 'settings.english', disabled: false },
-    { code: 'es', label: 'settings.spanish', disabled: false },
-    { code: 'ru', label: 'settings.russian', disabled: false },
-    { code: 'pt', label: 'settings.portuguese', disabled: false },
-    { code: 'de', label: 'settings.german', disabled: false },
-  ];
 
   return (
     <div className={styles.settingsView}>
-      <h2>{t('settings.title')}</h2>
+      <h2>Settings</h2>
       
       <div className={styles.settingsSection}>
-        <h3>{t('settings.general')}</h3>
+        <h3>General</h3>
         <div className={styles.toggleRow}>
           <div className={styles.toggleLabel}>
-            <span className={styles.toggleTitle}>{t('settings.language')}</span>
-            <span className={styles.toggleDesc}>{t('settings.language_desc')}</span>
+            <span className={styles.toggleTitle}>Language</span>
+            <span className={styles.toggleDesc}>Select application language (Work in Progress).</span>
           </div>
-          
-          <div className={styles.languageSelectorContainer}>
-            <div 
-              className={styles.languageSelectorTrigger}
-              onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Globe size={14} />
-                <span>{languages.find(l => l.code === i18n.language)?.label ? t(languages.find(l => l.code === i18n.language).label) : 'English'}</span>
-              </div>
-              <ChevronDown size={14} />
-            </div>
-
-            {isLanguageDropdownOpen && (
-              <div className={styles.languageSelectorDropdown}>
-                {languages.map((lang) => (
-                  <div 
-                    key={lang.code}
-                    className={`${styles.languageOption} ${i18n.language === lang.code ? styles.selected : ''} ${lang.disabled ? styles.disabled : ''}`}
-                    onClick={() => !lang.disabled && changeLanguage(lang.code)}
-                    title={lang.disabled ? "Coming Soon" : ""}
-                  >
-                    <Globe size={14} />
-                    {t(lang.label)}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <button 
+            className={styles.cleanCacheBtn} 
+            style={{ opacity: 0.5, cursor: 'not-allowed', width: 'auto', minWidth: '100px', justifyContent: 'center' }}
+            title="Coming Soon"
+          >
+            <Globe size={14} /> English
+          </button>
         </div>
       </div>
 
       <div className={styles.settingsSection}>
-        <h3>{t('settings.launcher_behavior')}</h3>
+        <h3>Launcher Behavior</h3>
         <div className={styles.toggleRow}>
           <div className={styles.toggleLabel}>
-            <span className={styles.toggleTitle}>{t('settings.auto_close')}</span>
-            <span className={styles.toggleDesc}>{t('settings.auto_close_desc')}</span>
+            <span className={styles.toggleTitle}>Auto-close Launcher</span>
+            <span className={styles.toggleDesc}>Automatically close the launcher 2 seconds after launching the game.</span>
           </div>
           <label className={styles.toggleSwitch}>
             <input 
@@ -106,8 +70,8 @@ const Settings = ({
         </div>
         <div className={styles.toggleRow}>
           <div className={styles.toggleLabel}>
-            <span className={styles.toggleTitle}>{t('settings.play_music')}</span>
-            <span className={styles.toggleDesc}>{t('settings.play_music_desc')}</span>
+            <span className={styles.toggleTitle}>Play Music on Startup</span>
+            <span className={styles.toggleDesc}>Automatically play theme music when the launcher starts.</span>
           </div>
           <label className={styles.toggleSwitch}>
             <input 
@@ -120,8 +84,8 @@ const Settings = ({
         </div>
         <div className={styles.toggleRow}>
            <div className={styles.toggleLabel}>
-               <span className={styles.toggleTitle}>{t('settings.clear_cache')}</span>
-               <span className={styles.toggleDesc}>{t('settings.clear_cache_desc')}</span>
+               <span className={styles.toggleTitle}>Clear Cache on Launch</span>
+               <span className={styles.toggleDesc}>Delete WDB folder before starting game (Fixes common item/creature bugs).</span>
            </div>
            <div className={styles.cacheControlRow}>
                <button 
@@ -130,7 +94,7 @@ const Settings = ({
                    title={`Clear cache for ${activeGame ? activeGame.shortName : 'Game'}`}
                    disabled={!activeGame}
                >
-                   <Trash2 size={14} /> {t('settings.clean_now')}
+                   <Trash2 size={14} /> Clean Now
                </button>
                <label className={styles.toggleSwitch}>
                    <input 
@@ -142,11 +106,62 @@ const Settings = ({
                </label>
            </div>
          </div>
+      </div>
+
+      <div className={styles.settingsSection}>
+        <h3>Installation Paths</h3>
+        <div className={styles.toggleRow}>
+          <div className={styles.toggleLabel}>
+            <span className={styles.toggleTitle}>Default Download Location</span>
+            <span className={styles.toggleDesc}>Where new game clients will be downloaded.</span>
+          </div>
+          <div className={styles.pathControl}>
+            <div className={styles.pathDisplay} title={defaultDownloadPath || "No default path set"}>
+              {defaultDownloadPath || "No default path set"}
+            </div>
+            <div className={styles.pathButtons}>
+              <button 
+                className={styles.iconBtn}
+                onClick={handleSetDefaultPath}
+                title="Change Download Path"
+              >
+                <FolderOpen size={16} />
+              </button>
+              {defaultDownloadPath && (
+                <button 
+                  className={styles.iconBtn}
+                  onClick={handleClearDefaultPath}
+                  title="Clear Default Path"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.settingsSection}>
+        <h3>Appearance</h3>
+        <div className={styles.toggleRow}>
+          <div className={styles.toggleLabel}>
+            <span className={styles.toggleTitle}>Glow Effects</span>
+            <span className={styles.toggleDesc}>Enable or disable the glow animation behind game icons.</span>
+          </div>
+          <label className={styles.toggleSwitch}>
+            <input 
+              type="checkbox" 
+              checked={enableGlowEffects}
+              onChange={toggleGlowEffects}
+            />
+            <span className={styles.slider}></span>
+          </label>
+        </div>
 
         <div className={styles.toggleRow}>
           <div className={styles.toggleLabel}>
-            <span className={styles.toggleTitle}>{t('settings.app_theme')}</span>
-            <span className={styles.toggleDesc}>{t('settings.app_theme_desc')}</span>
+            <span className={styles.toggleTitle}>App Theme</span>
+            <span className={styles.toggleDesc}>Select the visual theme for the launcher.</span>
           </div>
           <div className={styles.themeSelectorContainer}>
             <div 
@@ -182,11 +197,11 @@ const Settings = ({
       </div>
 
       <div className={styles.settingsSection}>
-        <h3>{t('settings.notifications_sound')}</h3>
+        <h3>Notifications & Sound</h3>
         <div className={styles.toggleRow}>
           <div className={styles.toggleLabel}>
-            <span className={styles.toggleTitle}>{t('settings.notifications')}</span>
-            <span className={styles.toggleDesc}>{t('settings.notifications_desc')}</span>
+            <span className={styles.toggleTitle}>Desktop Notifications</span>
+            <span className={styles.toggleDesc}>Show a Windows notification when downloads complete.</span>
           </div>
           <label className={styles.toggleSwitch}>
             <input 
@@ -199,8 +214,8 @@ const Settings = ({
         </div>
         <div className={styles.toggleRow}>
           <div className={styles.toggleLabel}>
-            <span className={styles.toggleTitle}>{t('settings.sound_effects')}</span>
-            <span className={styles.toggleDesc}>{t('settings.sound_effects_desc')}</span>
+            <span className={styles.toggleTitle}>Sound Effects</span>
+            <span className={styles.toggleDesc}>Play a sound when a download finishes.</span>
           </div>
           <label className={styles.toggleSwitch}>
             <input 

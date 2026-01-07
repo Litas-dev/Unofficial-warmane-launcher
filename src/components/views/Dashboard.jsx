@@ -7,8 +7,10 @@ import { Users } from 'lucide-react';
 import titleImage from '../../assets/logo-new-white.png';
 import discordIcon from '../../assets/discord.png';
 
-const Dashboard = ({ games, onGameSelect }) => {
+const Dashboard = ({ games, onGameSelect, settings }) => {
   const { t } = useTranslation();
+  const enableGlows = settings?.enableGlowEffects !== false; // Default to true if undefined
+  const glowClass = enableGlows ? '' : styles.disableGlow;
 
   // Helper: Retrieve game icon from configuration
   const getGameIcon = (id) => {
@@ -36,7 +38,7 @@ const Dashboard = ({ games, onGameSelect }) => {
         </p>
 
         <div 
-          className={styles.discordIconContainer} 
+          className={`${styles.discordIconContainer} ${glowClass}`} 
           onClick={handleJoinCommunity}
           title={t('dashboard.join_community')}
         >
@@ -52,7 +54,7 @@ const Dashboard = ({ games, onGameSelect }) => {
 
         <div className={styles.supportedGamesPreview}>
           <div 
-            className={styles.gameIconCard} 
+            className={`${styles.gameIconCard} ${glowClass}`} 
             onClick={() => onGameSelect && onGameSelect('classic')}
             style={{ cursor: 'pointer' }}
           >
@@ -67,7 +69,7 @@ const Dashboard = ({ games, onGameSelect }) => {
           </div>
 
           <div 
-            className={styles.gameIconCard}
+            className={`${styles.gameIconCard} ${glowClass}`}
             onClick={() => onGameSelect && onGameSelect('tbc')}
             style={{ cursor: 'pointer' }}
           >
@@ -82,7 +84,7 @@ const Dashboard = ({ games, onGameSelect }) => {
           </div>
 
           <div 
-            className={styles.gameIconCard}
+            className={`${styles.gameIconCard} ${glowClass}`}
             onClick={() => onGameSelect && onGameSelect('wotlk')}
             style={{ cursor: 'pointer' }}
           >

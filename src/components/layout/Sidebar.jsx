@@ -120,19 +120,18 @@ const Sidebar = ({
                     <Music size={16} />
                 </button>
 
-                <div style={{ display: 'flex', gap: '8px' }}>
-                    <a 
-                        href="#" 
-                        className={styles.websiteLink} 
-                        onClick={(e) => {
-                            e.preventDefault();
+                <div className={styles.footerIconsMiddle}>
+                    <button 
+                        className={styles.discordBtn} 
+                        onClick={() => {
                             const { shell } = window.require('electron');
-                            shell.openExternal('https://discord.gg/ttnHHMnru2');
+                            shell.openExternal('https://discord.gg/relictum');
                         }}
-                        title="Join Discord"
+                        title={t('sidebar.join_discord')}
                     >
                         <DiscordIcon size={16} />
-                    </a>
+                    </button>
+
                     <a 
                         href="#" 
                         className={styles.websiteLink} 
