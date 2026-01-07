@@ -50,6 +50,9 @@ It is the first private server launcher to feature **Advanced Integrity Verifica
 *   **Multi-Version Support**: Built-in support for managing **1.12.1**, **2.4.3**, and **3.3.5a** clients.
 *   **Auto-Locate**: Intelligently finds and verifies existing game installations for any supported version.
 
+### 🌍 Localization (Coming Soon)
+*   **Multi-Language Support**: Architecture for global language support is currently in development. (TBA)
+
 ## 🛠 Tech Stack
 
 *   **Core**: [Electron](https://www.electronjs.org/) (v28)
