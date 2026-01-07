@@ -57,10 +57,9 @@ const UpdateNotification = () => {
           playSoftNotificationSound();
           break;
         case 'not-available':
+          // Suppress "No updates found" notification as per user request
           setStatus('idle');
-          setMessage(t('updater.not_available'));
-          setIsVisible(true);
-          setTimeout(() => setIsVisible(false), 5000);
+          setIsVisible(false);
           break;
         case 'progress':
           setStatus('downloading');
