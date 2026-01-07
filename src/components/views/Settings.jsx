@@ -40,7 +40,7 @@ const Settings = ({
   const languages = [
     { code: 'en', label: 'settings.english', disabled: false },
     { code: 'es', label: 'settings.spanish', disabled: false },
-    { code: 'ru', label: 'settings.russian', disabled: true },
+    { code: 'ru', label: 'settings.russian', disabled: false },
     { code: 'pt', label: 'settings.portuguese', disabled: true },
     { code: 'de', label: 'settings.german', disabled: true },
   ];
